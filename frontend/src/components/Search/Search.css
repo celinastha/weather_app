@@ -1,0 +1,164 @@
+.Search{
+    background-color: #4a74cf9d;
+}
+
+.searchForm{
+    padding: 4vh 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburg{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.bar{
+    background-color: #fff;
+    width: 25px;
+    height: 2px;
+}
+
+
+/*Fav City Select Styles*/
+.favCitySelect{
+    padding: 10px 25px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ffffff3d;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+.favCitySelect option{
+    background: #7F9EE4;
+    color: #ffffff;
+}
+
+.favCitySelect option[disabled] { 
+    color: #f4f5ff;
+    background: #90aae7;
+}
+
+
+
+/*Search Input Form Styles*/
+.searchInputContainer{
+    position: relative;
+}
+
+.searchLabel, .searchIcon{
+    position: absolute;
+    top: 12px;
+}
+
+.searchLabel{
+    left: 25px;
+    color: #99b2e7;
+    cursor: text;
+}
+
+.searchIcon{
+    right: 25px;
+    color: #c2d4fc;
+}
+
+.searchInput{
+    padding: 12px 25px;
+    width: 50vw;
+    background-color: #ffffff10;
+    border: 2px solid #8fb1fa49;
+    border-radius: 20px;
+    outline: none;
+}
+
+.searchInput:focus{
+    border: 2px solid #dbe8fdb0;
+}
+
+.searchInput:focus ~ .searchLabel,
+.searchInput:not(:placeholder-shown) ~ .searchLabel{
+    color: #dbe8fd;
+    background-image: linear-gradient(#5780DA, #6288DC);
+    top: -12px;
+    padding: 0 4px;
+    font-size: 0.8em;
+    cursor: text;
+    z-index: 1;
+}
+.searchInput:focus ~ .searchIcon{
+    color: #dbe8fd;
+}
+
+
+
+/*Metric Unit Select Styles*/
+.metricUnitSelect{
+    padding: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ffffff3d;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+.metricUnitSelect option{
+    background: #7F9EE4;
+    color: #ffffff;
+}
+
+
+
+@media screen and (max-width: 622px){
+    .favCitySelect{
+        display: none;
+    }
+    .searchInput{
+        width: 58vw;
+    }
+    .hamburg{
+        display: flex;
+        margin-left: 5px;
+    }
+    .metricUnitSelect{
+        margin-right: 5px;
+    }
+}
+@media screen and (max-width: 345px){
+    .hamburg{
+        
+    }
+    .searchInput{
+        width: 52vw;
+        padding: 10px;
+    }
+    .searchLabel{
+        font-size: 0.82em;
+        top: 10px;
+        left: 16px;
+    }
+    .searchIcon{
+        font-size: 0.8em;
+        right: 16px;
+    }
+    .metricUnitSelect{
+        font-size: 0.7em;
+    }
+}
+
+
+
+/*Debug Helper Styles*/
+.debugHelpers{
+    margin-top: 30px;
+    display: none;
+    
+}
