@@ -1,5 +1,10 @@
 .Search{
     background-color: #4a74cf9d;
+    padding: 4vh 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .searchForm{
@@ -8,24 +13,79 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
 }
 
-.hamburg{
+.favMenuBtn{
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5px;
+    z-index: 3;
+    cursor: pointer;
 }
 .bar{
     background-color: #fff;
     width: 25px;
     height: 2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.favMenuBtn.close .bar:nth-child(2){
+    opacity: 0;
+}
+.favMenuBtn.close .bar:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+}
+.favMenuBtn.close .bar:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.favMenu{
+    position: fixed;
+    z-index: 2;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #4a74cf;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: #fff;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.favMenu.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+.favCitiesList{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.favCity{
+    width: 30vw;
+    padding: 10px;
+    background-color: #ffffff10;
+    border: 2px solid #8fb1fa49;
+    border-radius: 20px;
+    outline: none;
+    color: #e7f0ff;
+    cursor: pointer;
 }
 
 
 /*Fav City Select Styles*/
-.favCitySelect{
+.favCityButton{
     padding: 10px 25px;
     font-weight: bold;
     color: #ffffff;
@@ -34,16 +94,7 @@
     border-radius: 20px;
     outline: none;
     cursor: pointer;
-}
-
-.favCitySelect option{
-    background: #7F9EE4;
-    color: #ffffff;
-}
-
-.favCitySelect option[disabled] { 
-    color: #f4f5ff;
-    background: #90aae7;
+    z-index: 3;
 }
 
 
@@ -62,6 +113,7 @@
     left: 25px;
     color: #99b2e7;
     cursor: text;
+    transition: all 0.3s ease;
 }
 
 .searchIcon{
@@ -118,13 +170,16 @@
 
 
 @media screen and (max-width: 622px){
-    .favCitySelect{
+    .searchForm{
+        padding: 3vh 4vw;
+    }
+    .favCityButton{
         display: none;
     }
     .searchInput{
         width: 58vw;
     }
-    .hamburg{
+    .favMenuBtn{
         display: flex;
         margin-left: 5px;
     }
@@ -133,24 +188,39 @@
     }
 }
 @media screen and (max-width: 345px){
-    .hamburg{
-        
+    .searchForm{
+        padding: 3vh 4vw;
+    }
+    .favMenuBtn{
+        gap: 4px;
+    }
+    .bar{
+        width: 22px;
+        height: 2px;
     }
     .searchInput{
-        width: 52vw;
-        padding: 10px;
+        width: 54vw;
+        padding: 7px 10px;
     }
     .searchLabel{
         font-size: 0.82em;
-        top: 10px;
-        left: 16px;
+        top: 7px;
+        left: 15px;
     }
     .searchIcon{
-        font-size: 0.8em;
-        right: 16px;
+        font-size: 0.78em;
+        top: 9px;
+        right: 15px;
     }
     .metricUnitSelect{
         font-size: 0.7em;
+        padding: 7px;
+    }
+    .favMenuBtn.close .bar:nth-child(1){
+        transform: translateY(6px) rotate(45deg);
+    }
+    .favMenuBtn.close .bar:nth-child(3){
+        transform: translateY(-6px) rotate(-45deg);
     }
 }
 
@@ -160,5 +230,4 @@
 .debugHelpers{
     margin-top: 30px;
     display: none;
-    
 }

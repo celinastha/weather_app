@@ -4,7 +4,7 @@ import './CurrentWeather.css'
 const CurrentWeather = () => {
   return (
     <div className='CurrentWeather'>
-        Current
+        Current Weather Comming Soon!!
     </div>
   )
 }
