@@ -1,0 +1,101 @@
+.container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.currentWeatherHeading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.currentWeatherHeading h1{
+    color: white;
+    margin: 20px;
+}
+
+.favIconBtn{
+    background-color: transparent;
+    border: none;
+}
+
+.favIcon{
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.currentWeatherContainer{
+    height: max-content;
+    background-color: #ffffff38;
+    border-radius: 40px;
+    padding: 30px 40px;
+    color: white;
+}
+
+.currentWeatherContainer h5{
+    font-size: 0.9em;
+
+}
+
+.currentWeatherInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 140px;
+}
+
+.leftside{}
+
+.weatherIcon{}
+
+.weatherTemp{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 12px;
+    margin: 45px 0;
+}
+
+.temp{
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+}
+.weatherDescription{
+    font-weight: bold;
+}
+.feelsLike{}
+
+.rightside{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.tempMaxMinContainer, .windSpeedContainer, .humidityContainer, .pressureContainer, .visibilityContainer, .cloudsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.label{
+    color: #cde3e7de;
+    font-size: 0.8em;
+}
+
+.value{
+    font-size: 1em;
+}

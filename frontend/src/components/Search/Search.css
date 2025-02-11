@@ -1,49 +1,109 @@
 .Search{
-    background-color: #4a74cf9d;
+    background-color: #46c5d369;
+    padding: 24px 30px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
 }
 
-.searchForm{
-    padding: 4vh 4vw;
+.searchContainer{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.hamburg{
+
+
+/*Fav Cities Menu Styles*/
+.favMenuBtn{
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5px;
+    z-index: 3;
+    cursor: pointer;
 }
 .bar{
     background-color: #fff;
     width: 25px;
     height: 2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-
-
-/*Fav City Select Styles*/
-.favCitySelect{
+.favMenuBtn.close .bar:nth-child(2){
+    opacity: 0;
+}
+.favMenuBtn.close .bar:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+}
+.favMenuBtn.close .bar:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+}
+.title_description{
+    text-align: center;
+}
+.favMenu{
+    position: fixed;
+    z-index: 2;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #1A759F;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: #fff;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.favDescription{
+    color: #e2e2e2;
+    margin: 10px;
+}
+.favMenu.show{
+    opacity: 1;
+    visibility: visible;
+}
+.favCitiesList{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.favCity{
+    width: 30vw;
+    padding: 10px;
+    background-color: #ffffff10;
+    border: 2px solid #8fb1fa49;
+    border-radius: 20px;
+    outline: none;
+    color: #e7f0ff;
+    cursor: pointer;
+}
+.favCityButton{
     padding: 10px 25px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #ffffff3d;
+    background-color: #184E77;
     border: none;
     border-radius: 20px;
     outline: none;
     cursor: pointer;
+    z-index: 3;
+    box-shadow: 0 5px 5px #0000004b;    
 }
-
-.favCitySelect option{
-    background: #7F9EE4;
-    color: #ffffff;
+.favCityButton:hover{
+    background-color: #164466;
 }
-
-.favCitySelect option[disabled] { 
-    color: #f4f5ff;
-    background: #90aae7;
+.favCityButton:active{
+    background-color: #082033;
 }
 
 
@@ -52,51 +112,81 @@
 .searchInputContainer{
     position: relative;
 }
-
-.searchLabel, .searchIcon{
+.searchLabel, .searchIconContainer, .clearInput{
     position: absolute;
-    top: 12px;
 }
-
 .searchLabel{
+    top: 12px;
     left: 25px;
-    color: #99b2e7;
+    color: #c8f1f59f;
     cursor: text;
+    transition: all 0.3s ease;
 }
-
-.searchIcon{
-    right: 25px;
-    color: #c2d4fc;
-}
-
 .searchInput{
-    padding: 12px 25px;
+    padding: 15px 25px;
     width: 50vw;
-    background-color: #ffffff10;
-    border: 2px solid #8fb1fa49;
-    border-radius: 20px;
+    background-color: #47c1ccc7;
+    border: none;
+    border-radius: 50px;
     outline: none;
+    box-shadow: 0 5px 5px #00000021;
 }
-
 .searchInput:focus{
-    border: 2px solid #dbe8fdb0;
+    border: 2px solid #b8f3f82f;
+    padding: 13px 25px;
 }
-
+.searchIconContainer{
+    top: 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    right: 25px;
+}
+.searchIcon{
+    color: #ffffff; 
+}
+.clearInput{
+    display: none;
+    top: 13px;
+    right: 65px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.clearInput.show{
+    display: block;
+}
+.clear{
+    font-size: 1.2em;
+    color: white;
+}
 .searchInput:focus ~ .searchLabel,
 .searchInput:not(:placeholder-shown) ~ .searchLabel{
     color: #dbe8fd;
-    background-image: linear-gradient(#5780DA, #6288DC);
+    background-image: linear-gradient(#3AAFB7, #44BDC7);
     top: -12px;
     padding: 0 4px;
     font-size: 0.8em;
     cursor: text;
     z-index: 1;
 }
-.searchInput:focus ~ .searchIcon{
-    color: #dbe8fd;
+.searchInput:focus ~ .searchIconContainer{
+    background-color: #ffffff46;
+    right: 2px;
+    top: 2px;
+    padding: 13px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.searchInput:focus ~ .searchIconContainer:hover{
+    background-color: #ffffff60;
+}
+.searchInput:focus ~ .searchIconContainer:active{
+    background-color: #ffffffd0;
 }
 
-
+  
 
 /*Metric Unit Select Styles*/
 .metricUnitSelect{
@@ -108,23 +198,31 @@
     border-radius: 20px;
     outline: none;
     cursor: pointer;
-}
+    box-shadow: 0 5px 5px #00000021;
 
+}
+.metricUnitSelect:hover{
+    background-color: #ffffff60 ;
+}
 .metricUnitSelect option{
-    background: #7F9EE4;
+    background: #70ccd4;
     color: #ffffff;
 }
 
 
 
+/*Responsive Styles*/
 @media screen and (max-width: 622px){
-    .favCitySelect{
+    .searchForm{
+        padding: 3vh 4vw;
+    }
+    .favCityButton{
         display: none;
     }
     .searchInput{
         width: 58vw;
     }
-    .hamburg{
+    .favMenuBtn{
         display: flex;
         margin-left: 5px;
     }
@@ -133,32 +231,50 @@
     }
 }
 @media screen and (max-width: 345px){
-    .hamburg{
-        
+    .searchForm{
+        padding: 3vh 4vw;
+    }
+    .favMenuBtn{
+        gap: 4px;
+    }
+    .bar{
+        width: 22px;
+        height: 2px;
     }
     .searchInput{
-        width: 52vw;
-        padding: 10px;
+        width: 54vw;
+        padding: 7px 10px;
     }
     .searchLabel{
         font-size: 0.82em;
-        top: 10px;
-        left: 16px;
+        top: 7px;
+        left: 15px;
     }
     .searchIcon{
-        font-size: 0.8em;
-        right: 16px;
+        font-size: 0.78em;
+        top: 9px;
+        right: 15px;
     }
     .metricUnitSelect{
         font-size: 0.7em;
+        padding: 7px;
+    }
+    .favMenuBtn.close .bar:nth-child(1){
+        transform: translateY(6px) rotate(45deg);
+    }
+    .favMenuBtn.close .bar:nth-child(3){
+        transform: translateY(-6px) rotate(-45deg);
     }
 }
-
+@media screen and (max-width: 440px){
+    .favDescription{
+        font-size: 0.8em;
+    }
+}
 
 
 /*Debug Helper Styles*/
 .debugHelpers{
     margin-top: 30px;
     display: none;
-    
 }
