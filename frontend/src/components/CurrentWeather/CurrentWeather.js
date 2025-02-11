@@ -56,7 +56,7 @@ const CurrentWeather = ({ currentCity, currentMetricUnit, setFavCities, favCitie
       ) : (
         <>
           <div className='container'>
-            
+
             <div className="currentWeatherHeading">
               <h1 className='currentCity'>{firstLetterCapital(currentCity)}</h1>
               {!isFavCity ? 
@@ -75,11 +75,11 @@ const CurrentWeather = ({ currentCity, currentMetricUnit, setFavCities, favCitie
                 <div className='leftside'>
                   <div className='weatherTemp'>
                     <img src={iconUrl} alt='weather_icon' className='weatherIcon'/>
-                    <span className='temp'>{weather.temperature} {currentMetricUnit}</span>
+                    <span className='temp'>{weather.temperature}{currentMetricUnit}</span>
                   </div>
                   <div className='description'>
                     <span className='weatherDescription'>{weather.description}</span>
-                    <span className='feelsLike'>Feels Like {weather.feelsLike} {currentMetricUnit}</span>
+                    <span className='feelsLike'>Feels Like {weather.feelsLike}{currentMetricUnit}</span>
                   </div>
                 </div>
 
