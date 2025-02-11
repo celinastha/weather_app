@@ -238,26 +238,27 @@
         gap: 4px;
     }
     .bar{
-        width: 22px;
+        width: 20px;
         height: 2px;
     }
     .searchInput{
-        width: 54vw;
-        padding: 7px 10px;
+        width: 52vw;
+        padding: 7px;
     }
     .searchLabel{
-        font-size: 0.82em;
+        font-size: 0.8em;
         top: 7px;
         left: 15px;
     }
     .searchIcon{
-        font-size: 0.78em;
+        font-size: 0.8em;
         top: 9px;
         right: 15px;
+        
     }
     .metricUnitSelect{
         font-size: 0.7em;
-        padding: 7px;
+        padding: 6px;
     }
     .favMenuBtn.close .bar:nth-child(1){
         transform: translateY(6px) rotate(45deg);
@@ -265,10 +266,47 @@
     .favMenuBtn.close .bar:nth-child(3){
         transform: translateY(-6px) rotate(-45deg);
     }
+    .searchInput:focus{
+        padding: 7px;
+    }
+    .searchInput:focus ~ .searchIconContainer{
+        padding: 7px 12px;
+    }
+    .searchInput:focus ~ .searchLabel{
+        font-size: 0.8em;
+    }
 }
+
 @media screen and (max-width: 440px){
     .favDescription{
         font-size: 0.8em;
+    }
+    .bar{
+        width: 20px;
+        height: 2px;
+    }
+    .metricUnitSelect{
+        font-size: 0.7em;
+        padding: 10px;
+    }
+    .searchInput{
+        width: 52vw;
+        padding: 11px;
+    }
+    .searchLabel{
+        font-size: 0.9em;
+        top: 9px;
+        left: 15px;
+    }
+    .searchIconContainer{
+        top: 12px;
+        right: 12px;
+    }
+    .favCity{
+        width: 40vw;
+    }
+    .favDescription{
+        font-size: 0.74em;
     }
 }
 
