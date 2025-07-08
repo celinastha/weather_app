@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://weather-app-o232.onrender.com";
 
 const getCurrentWeather = async (city, metricUnit, setWeather, setError) => {
     var unitUsed = "imperial";
