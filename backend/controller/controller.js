@@ -3,15 +3,19 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 require('dotenv').config();
 
 
-
 module.exports.search = async (req, res) => {
-    const { city } = req.body;
+    const { city } = req.params;
+    const { unit } = req.query;
+
     if (!city) { 
         return res.status(400).send({message: "City not provided"}); 
     }
+    if(!unit){
+        unit = "imperial";
+    }
 
     try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.APIKEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${process.env.APIKEY}`;
         const response = await fetch(url);
         if(!response.ok){
             throw new Error(`failed to fetch data: ${response.statusText}`);
@@ -19,7 +23,7 @@ module.exports.search = async (req, res) => {
         const weatherData = await response.json();
         res.status(200).send(weatherData);
     } catch(err){
-        res.status(500).send(err.message);
+        res.status(500).send({ error: err.message});
     }
 };
 
@@ -48,20 +52,11 @@ module.exports.saveFavCity = async (req, res) => {
             }
 
             if(results[0].count === 0){
-                const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.APIKEY}`;
-                const response = await fetch(url);
-                if(!response.ok){
-                    throw new Error(`Failed to fetch data: ${response.statusText}`);
-                }
-                const weatherData = await response.json();
-                console.log(weatherData);
-                
-                const weatherJsonData = JSON.stringify(weatherData);
-                database.query(`INSERT INTO favorite_cities (city, weather_data) VALUES (?, ?)`, [city, weatherJsonData], (err, result) => {
+                database.query(`INSERT INTO favorite_cities (city) VALUES (?)`, [city], (err, result) => {
                     if(err){
                         return res.status(500).send(err);
                     }
-                    res.status(200).send(`${city} city SAVED to your fav cities!!`);
+                    res.status(200).send(`${city} SAVED to fav cities!`);
                 });
             } else{
                 res.status(500).send("This city is ALREADY saved as your fav city!");
@@ -81,6 +76,6 @@ module.exports.deleteFavCity = async (req, res) => {
         if(err){
             return res.status(500).send(err);
         }
-        res.status(200).send(`${city} city DELETED from your fav cities!`);
+        res.status(200).send(`${city} REMOVED from fav cities!`);
     });
 };

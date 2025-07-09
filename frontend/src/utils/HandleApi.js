@@ -1,7 +1,8 @@
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = process.env.API_URL;
+//const baseUrl = "http://localhost:8080";
 
 const getCurrentWeather = async (city, metricUnit, setWeather, setError) => {
     var unitUsed = "imperial";

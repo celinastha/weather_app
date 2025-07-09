@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/getFavCities', getFavCities);
 router.post('/saveFavCity', saveFavCity);
-router.get('/search', search);
+router.get('/search/:city', search);
 router.post('/deleteFavCity', deleteFavCity);
 
 

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api": {
+      "name": "/api",
+      "lambdaFunction": "weatherapp939789fa",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "api": {
+    "weatherApp": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "weatherapp939789fa"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "weatherapp939789fa": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3AndCloudFront"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_weatherapp939789fa_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "weatherapp939789fa"
+        }
+      ]
+    },
+    "AMPLIFY_function_weatherapp939789fa_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "weatherapp939789fa"
+        }
+      ]
+    }
+  }
+}
