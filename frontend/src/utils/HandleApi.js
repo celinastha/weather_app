@@ -1,7 +1,9 @@
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-const baseUrl = "https://weather-app-o232.onrender.com";
+//const baseUrl = "http://localhost:8080";
+const weatherDbUrl = "https://dl0lhqciid.execute-api.us-east-2.amazonaws.com/dev";
+const openweatherUrl = "https://tvid2r6lm7.execute-api.us-east-2.amazonaws.com/dev";
 
 const getCurrentWeather = async (city, metricUnit, setWeather, setError) => {
     var unitUsed = "imperial";
@@ -11,7 +13,7 @@ const getCurrentWeather = async (city, metricUnit, setWeather, setError) => {
         unitUsed = "metric";
     }
     try {
-        const response = await fetch(`${baseUrl}/search/${city}?unit=${encodeURIComponent(unitUsed)}`);
+        const response = await fetch(`${openweatherUrl}/search?city=${city}&unit=${unitUsed}`);
         if(response){
             setError('');
         }
@@ -31,6 +33,7 @@ const getCurrentWeather = async (city, metricUnit, setWeather, setError) => {
             tempMin: Math.floor(weatherData.main.temp_min),
             clouds: weatherData.clouds.all
         });
+        console.log("Current city weatherrrrr - ", weatherData);
     } catch(err){
         console.log(err);
         setError(`Can't find Weather info for ${city}`);
@@ -40,7 +43,7 @@ const getCurrentWeather = async (city, metricUnit, setWeather, setError) => {
 
 const getFavoriteCities = async (setFavCities) => {
     try {
-        const response = await fetch(`${baseUrl}/getFavCities`);
+        const response = await fetch(`${weatherDbUrl}/getFavCities`);
         const favData = await response.json();
         console.log("fav Data: ", favData);
         setFavCities(favData);
@@ -51,7 +54,7 @@ const getFavoriteCities = async (setFavCities) => {
 
 const savFavCities = async (currentCity, setFavCities) => {
     try{
-        const response = await fetch(`${baseUrl}/saveFavCity`, {
+        const response = await fetch(`${weatherDbUrl}/saveFavCity`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +73,7 @@ const savFavCities = async (currentCity, setFavCities) => {
 
 const removeFavCities = async (currentCity, setFavCities) => {
     try{
-        const response = await fetch(`${baseUrl}/deleteFavCity`, {
+        const response = await fetch(`${weatherDbUrl}/deleteFavCity`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

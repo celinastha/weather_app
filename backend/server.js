@@ -6,7 +6,7 @@ const routes = require('./routes/routes');
 
 require('dotenv').config();
 
-const PORT = import.meta.env.PORT;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());

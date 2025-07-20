@@ -5,13 +5,15 @@ require('dotenv').config();
 
 
 module.exports.search = async (req, res) => {
-    const { city } = req.body;
+    const city = req.query.city;
+    const unit = req.query.unit;
+
     if (!city) { 
         return res.status(400).send({message: "City not provided"}); 
     }
 
     try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.APIKEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${process.env.APIKEY}`;
         const response = await fetch(url);
         if(!response.ok){
             throw new Error(`failed to fetch data: ${response.statusText}`);
@@ -48,7 +50,7 @@ module.exports.saveFavCity = async (req, res) => {
             }
 
             if(results[0].count === 0){
-                const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.APIKEY}`;
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.APIKEY}`;
                 const response = await fetch(url);
                 if(!response.ok){
                     throw new Error(`Failed to fetch data: ${response.statusText}`);
