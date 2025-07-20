@@ -6,7 +6,7 @@ Demo hosted via AWS Amplify:
 ---
 
 
-###Core Features ⭐⭐
+## Core Features ⭐⭐
 - Search Weather by city
 - Displays current temperature, conditions, icon, etc.
 - Save fav cities in MySQL
@@ -15,7 +15,7 @@ Demo hosted via AWS Amplify:
 ---
 
 
-###Tech Stack 🚀
+## Tech Stack 🚀
 - **Frontend**: ReactJS, CSS
 - **Backend**: NodeJS + Express
 - **Weather API**: OpenWeather (API key in `.env`, excluded from Git)
@@ -44,11 +44,11 @@ DB_PORT=3306        # optional <br />
 PORT=4000           # backend server port <br />
 
 ### 3. Install dependencies
-Frontend: cd frontend && npm install
+Frontend: cd frontend && npm install <br />
 Backend: cd ../backend && npm install
 
 ### 4. Run development servers
-In terminal 1 (backend): cd backend && node server.js
+In terminal 1 (backend): cd backend && node server.js <br />
 In terminal 2 (frontend): cd frontend && npm start
 
 
